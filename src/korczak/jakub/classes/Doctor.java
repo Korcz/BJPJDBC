@@ -1,9 +1,7 @@
-package korczak.jakub.doctors;
+package korczak.jakub.classes;
 
 import java.util.List;
 import java.util.Scanner;
-
-import korczak.jakub.service.Visit;
 
 public class Doctor
 {
@@ -11,7 +9,6 @@ public class Doctor
 	private String name;
 	private String surname;
 	private int salary;
-	private List<Visit> dutyRoatVisit;
 	
 	
 	
@@ -66,18 +63,11 @@ public class Doctor
 	{
 		this.salary = salary;
 	}
-	public List<Visit> getDutyRoatVisit()
-	{
-		return dutyRoatVisit;
-	}
-	public void setDutyRoatVisit(List<Visit> dutyRoatVisit)
-	{
-		this.dutyRoatVisit = dutyRoatVisit;
-	}
+	
 	@Override
 	public String toString()
 	{
-		return "Doctor [id=" + id + ", name=" + name + ", surname=" + surname + ", salary=" + salary;
+		return "Doctor: [ ID=" + id + ", name: " + name + ", surname: " + surname + ", salary: " + salary + " ]\n";
 	}
 	
 	

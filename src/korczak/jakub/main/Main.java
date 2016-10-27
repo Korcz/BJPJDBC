@@ -11,6 +11,7 @@ public class Main
 	public static void insertData()
 	{
 		Database.insertDoctor("Steven", "Strange", 325000);
+		
 		Database.insertPatient("Jack", "Nicholson", "Schizophrenia", 79);
 	}
 	public static void showMenu()
@@ -23,8 +24,12 @@ public class Main
 		printMenu += "\t4.Find patient (by ID)\n";
 		printMenu += "\t5.Show all patients\n";
 		printMenu += "\t6.Delete patient (by ID)\n";
-		printMenu += "\t7.Show average age of patient\n";
-		printMenu += "\t8.EXIT PROGRAM";
+		printMenu += "\t7.Show doctors max salary\n";
+		printMenu += "\t8.Show patient average age\n";
+		printMenu += "\t9.Add doctor\n";
+		printMenu += "\t10.Add patient\n";
+		printMenu += "\t11.Creat a visit\n";
+		printMenu += "\t12.EXIT PROGRAM";
 
 		System.out.println(printMenu);
 		System.out.print("Your option is: ");
@@ -39,7 +44,7 @@ public class Main
 
 	public static void functionSwitcher()
 	{
-		Scanner inputOption = new Scanner(System.in);
+		Scanner inputChoice = new Scanner(System.in);
 		
 		boolean isExit = false;
 
@@ -50,19 +55,71 @@ public class Main
 			{
 			case 1:
 				System.out.println("Enter doctor ID");
-				int choiceD = Integer.parseInt(inputOption.nextLine());
-				System.out.println(Database.selectOneDoctor(choiceD));
+				int choiceFindDoctor = Integer.parseInt(inputChoice.nextLine());
+				System.out.println(Database.selectOneDoctor(choiceFindDoctor));
 				break;
 			case 2:
-				
+				System.out.println(Database.selectDoctor());
 				break;
 			case 3:
-				
+				System.out.println("Enter doctor ID");
+				int choiceDeleteDoctor = Integer.parseInt(inputChoice.nextLine());
+				Database.deleteDoctor(choiceDeleteDoctor);
+				System.out.println("Doctore was deleted.");
 				break;
 			case 4:
-				
+				System.out.println("Enter patient ID");
+				int choiceFindPatient = Integer.parseInt(inputChoice.nextLine());
+				System.out.println(Database.selectonePatient(choiceFindPatient));
 				break;
 			case 5:
+				System.out.println(Database.selectPatient());
+				break;
+			case 6:
+				System.out.println("Enter patient ID");
+				int choiceDeletePatient = Integer.parseInt(inputChoice.nextLine());
+				Database.deletePatient(choiceDeletePatient);
+				System.out.println("Patient was deleted");
+				break;
+			case 7:
+				System.out.println("Max doctors salary = " + Database.maxSalOfDoctors());
+				break;
+			case 8:
+				System.out.println("Avarag patients age = " + Database.avgAgeOfPatient());
+				break;
+			case 9:
+				System.out.println("Enter doctor name");
+				String doctorName = inputChoice.nextLine();
+				System.out.println("Enter doctor surname;");
+				String doctorSurname = inputChoice.nextLine();
+				System.out.println("Enter doctor salary");
+				int salary = Integer.parseInt(inputChoice.nextLine());
+				Database.insertDoctor(doctorName, doctorSurname, salary);
+				System.out.println("Doctor was added");
+				break;
+			case 10:
+				System.out.println("Enter patient name");
+				String patientName = inputChoice.nextLine();
+				System.out.println("Enter doctor surname;");
+				String patientSurname = inputChoice.nextLine();
+				System.out.println("Enter patient ilness");
+				String ilness = inputChoice.nextLine();
+				System.out.println("Enter doctor salary");
+				int age = Integer.parseInt(inputChoice.nextLine());
+				Database.insertPatient(patientName, patientSurname, ilness, age);
+				System.out.println("Patient was added");
+				break;
+			case 11:
+				System.out.println("Enter doctor ID");
+				int doctorID = Integer.parseInt(inputChoice.nextLine());
+				System.out.println("Enter patient ID");
+				int patientID = Integer.parseInt(inputChoice.nextLine());
+				System.out.println("Enter place");
+				String visitPlace = inputChoice.nextLine();
+				
+				System.out.println("Visit was arranged");
+				break;
+			case 12:
 				System.out.println("Program closed");
 				isExit = true;
 				break;
@@ -73,7 +130,7 @@ public class Main
 		}
 	}
 
-	public static void main(String[] args)
+	public static void main(String[] args) //visit ceation problem.
 	{
 		Database.connect();
 		Database.createTables();

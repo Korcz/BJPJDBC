@@ -1,4 +1,4 @@
-package korczak.jakub.service;
+package korczak.jakub.classes;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -10,17 +10,15 @@ public class Patient
 	private String name;
 	private String surname;
 	private String ilness;
-	//private LocalDate birthDate;
 	private int age;
 	
 	
-	public Patient(int id, String name, String surname, String ilness, int age/*int year, int month, int dayOfMonth*/)
+	public Patient(int id, String name, String surname, String ilness, int age)
 	{
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.ilness = ilness;
-		//this.birthDate = LocalDate.of(year, month, dayOfMonth);
 		this.age = age;
 	}
 	public Patient()
@@ -32,13 +30,6 @@ public class Patient
 		name = sc.nextLine();
 		System.out.println("Entr surname");
 		surname = sc.nextLine();
-		/*System.out.println("Enter birth year");
-		int year = Integer.parseInt(sc.nextLine());
-		System.out.println("Enter birth month");
-		int month = Integer.parseInt(sc.nextLine());
-		System.out.println("Enter birth day");
-		int dayOfMonth = Integer.parseInt(sc.nextLine());
-		this.birthDate = LocalDate.of(year, month, dayOfMonth);*/
 		System.out.println("Enter age");
 		age = Integer.parseInt(sc.nextLine());
 	}
@@ -74,14 +65,6 @@ public class Patient
 	{
 		this.ilness = ilness;
 	}
-	/*public LocalDate getBirthDate()
-	{
-		return birthDate;
-	}
-	public void setBirthDate(LocalDate birthDate)
-	{
-		this.birthDate = birthDate;
-	}*/
 	public int getAge()
 	{
 		return age;
@@ -91,22 +74,10 @@ public class Patient
 		this.age = age;
 	}
 	
-	/*public int calculateAge()
-	{
-		LocalDate currentDate = LocalDate.now();
-		if ((birthDate != null) && (currentDate != null))
-		{
-			return Period.between(birthDate, currentDate).getYears();
-		} else
-		{
-			return 0;
-		}
-	}*/
-	
 	@Override
 	public String toString()
 	{
-		return "Patient [id=" + id + ", name=" + name + ", surname=" + surname + ", ilness=" + ilness + ", age=" + age + "]";
+		return "Patient: [ ID: " + id + ", name: " + name + ", surname: " + surname + ", ilness: " + ilness + ", age: " + age + " ]\n";
 	}
 	
 	

@@ -1,7 +1,5 @@
-package korczak.jakub.service;
+package korczak.jakub.classes;
 import java.util.Date;
-
-import korczak.jakub.doctors.Doctor;
 
 public class Visit
 {

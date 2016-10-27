@@ -11,9 +11,9 @@ import java.util.List;
 
 import org.sqlite.SQLiteConfig;
 
-import korczak.jakub.doctors.Doctor;
-import korczak.jakub.service.Patient;
-import korczak.jakub.service.Visit;
+import korczak.jakub.classes.Doctor;
+import korczak.jakub.classes.Patient;
+import korczak.jakub.classes.Visit;
 
 public class Database
 {
@@ -294,7 +294,26 @@ public class Database
 		}
 
 	}
+	
+	public static double maxSalOfDoctors()
+	{
+		String avgSal = "Select MAX(salary) FROM Doctors;";
+		try
+		{
+			ResultSet rs = stat.executeQuery(avgSal);
+			if (rs.next())
+			{
+				return rs.getDouble(1);
+			}
+			return -1;
+		} catch (SQLException e1)
+		{
+			e1.printStackTrace();
+			return -1;
+		}
 
+	}
+	
 	public static double avgAgeOfPatient()
 	{
 		String avgAge = "Select AVG(age) FROM Patients;";
